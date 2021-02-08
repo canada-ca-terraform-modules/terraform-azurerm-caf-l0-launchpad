@@ -16,11 +16,11 @@ resource_groups = {
     useprefix  = true
     max_length = 40
   }
-  gitops = {
-    name       = "launchpad-devops-agents"
-    useprefix  = true
-    max_length = 40
-  }
+#  gitops = {
+#    name       = "launchpad-devops-agents"
+#    useprefix  = true
+#    max_length = 40
+#  }
 }
 
 storage_account_name = "level0"
