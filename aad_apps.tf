@@ -1,6 +1,5 @@
 module azure_applications {
-  source  = "aztfmod/caf-aad-apps/azuread"
-  version = "1.0.0"
+  source  = "${path.module}/modules/terraform-azuread-caf-aad-apps"
 
   aad_apps            = var.aad_apps
   aad_api_permissions = var.aad_api_permissions
