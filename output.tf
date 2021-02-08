@@ -25,13 +25,3 @@ output keyvaults {
   value     = azurerm_key_vault.keyvault
 }
 
-output github_token_keyvault {
-  sensitive = true
-
-  value = {
-    keyvault_secret_name = azurerm_key_vault_secret.github_pat.name
-    keyvault_name        = azurerm_key_vault.keyvault[var.launchpad_key_names.keyvault].name
-    keyvault_id          = azurerm_key_vault.keyvault[var.launchpad_key_names.keyvault].id
-  }
-}
-
