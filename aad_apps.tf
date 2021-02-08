@@ -1,5 +1,5 @@
 module azure_applications {
-  source  = "${path.module}/modules/terraform-azuread-caf-aad-apps"
+  source  = "./modules/terraform-azuread-caf-aad-apps"
 
   aad_apps            = var.aad_apps
   aad_api_permissions = var.aad_api_permissions
