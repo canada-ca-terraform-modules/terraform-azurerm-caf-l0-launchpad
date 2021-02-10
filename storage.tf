@@ -35,7 +35,7 @@ resource "null_resource" "set_versionning" {
   depends_on = [azurerm_storage_account.stg]
 
   provisioner "local-exec" {
-    command     = "./scripts/set_versionning.sh"
+    command     = "${path.module}/scripts/set_version.sh"
     interpreter = ["/bin/sh"]
     on_failure  = fail
 
