@@ -48,7 +48,7 @@ resource "null_resource" "grant_admin_consent" {
   }
 
   provisioner "local-exec" {
-    command     = "./scripts/grant_consent.sh"
+    command     = "${path.module}/scripts/grant_consent.sh"
     interpreter = ["/bin/sh"]
     on_failure  = fail
 

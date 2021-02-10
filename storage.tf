@@ -13,9 +13,10 @@ resource "azurerm_storage_account" "stg" {
   name                     = azurecaf_naming_convention.stg.result
   resource_group_name      = azurerm_resource_group.rg["tfstate"].name
   location                 = azurerm_resource_group.rg["tfstate"].location
-  account_kind             = "BlobStorage"
+  account_kind             = "StorageV2"
   account_tier             = "Standard"
   account_replication_type = "RAGRS"
+  min_tls_version          = "TLS1_2"
 
   tags = {
     tfstate     = var.level
@@ -27,6 +28,21 @@ resource "azurerm_storage_account" "stg" {
     ignore_changes = [
       tags.launchpad
     ]
+  }
+}
+
+resource "null_resource" "set_versionning" {
+  depends_on = [azurerm_storage_account.stg]
+
+  provisioner "local-exec" {
+    command     = "${path.module}/scripts/set_version.sh"
+    interpreter = ["/bin/sh"]
+    on_failure  = fail
+
+    environment = {
+      RESSOURCE_GROUP_NAME = azurerm_storage_account.stg.resource_group_name
+      STORAGEACCOUNT_NAME  = azurerm_storage_account.stg.name
+    }
   }
 }
 

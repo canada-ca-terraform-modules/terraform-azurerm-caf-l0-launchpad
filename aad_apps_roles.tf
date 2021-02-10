@@ -21,7 +21,7 @@ resource "null_resource" "set_azure_ad_roles" {
   }
 
   provisioner "local-exec" {
-    command     = "./scripts/set_ad_role.sh"
+    command     = "${path.module}/scripts/set_ad_role.sh"
     interpreter = ["/bin/sh"]
     on_failure  = fail
 
