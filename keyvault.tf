@@ -29,7 +29,7 @@ resource "azurerm_key_vault" "keyvault" {
     object_id = var.logged_user_objectId
 
     key_permissions    = []
-    secret_permissions = ["Get", "List", "Set", "Delete"]
+    secret_permissions = ["Get", "List", "Set", "Delete", "Recover"]
   }
 
   lifecycle {
