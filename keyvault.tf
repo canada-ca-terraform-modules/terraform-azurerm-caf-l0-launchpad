@@ -48,12 +48,6 @@ resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_owners" {
   object_id = module.azuread_groups_L0.L0_Subscription_Owners.id
 
   secret_permissions = ["Get", "List", "Set", "Delete", "Purge", "Restore", "Backup", "Recover"]
-
-  lifecycle {
-    ignore_changes = [
-      access_policy
-    ]
-  }
 }
 
 resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_contributors" {
@@ -65,10 +59,4 @@ resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_contributo
   object_id = module.azuread_groups_L0.L0_Subscription_Owners.id
 
   secret_permissions = ["Get", "List", "Set", "Delete", "Purge", "Restore", "Backup", "Recover"]
-
-  lifecycle {
-    ignore_changes = [
-      access_policy
-    ]
-  }
 }

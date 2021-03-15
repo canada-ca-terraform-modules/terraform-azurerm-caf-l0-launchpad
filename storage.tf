@@ -65,13 +65,13 @@ resource "azurerm_role_assignment" "role1_current_user" {
 }
 
 resource "azurerm_role_assignment" "launchpad_storage_blob_contributor_owners" {
-  scope                = azurerm_resource_group.rg.tfstate.id
+  scope                = azurerm_resource_group.rg["tfstate"].id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = module.azuread_groups_L0.L0_Subscription_Owners.id
 }
 
 resource "azurerm_role_assignment" "launchpad_storage_blob_contributor_contributors" {
-  scope                = azurerm_resource_group.rg.tfstate.id
+  scope                = azurerm_resource_group.rg["tfstate"].id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = module.azuread_groups_L0.L0_Subscription_Contributors.id
 }
