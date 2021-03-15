@@ -1,11 +1,11 @@
 locals {
   azuread_groupsMap = {
     L0_Subscription_Owners = {
-      userDefinedString = "${var.group}_${var.project}_L1_Subscription_Owners"
+      userDefinedString = "${var.group}_${var.project}_L0_Subscription_Owners"
       owners            = var.L0_RBAC.ownerNames
     },
     L0_Subscription_Contributors = {
-      userDefinedString = "${var.group}_${var.project}_L1_Subscription_Contributors"
+      userDefinedString = "${var.group}_${var.project}_L0_Subscription_Contributors"
       owners            = var.L0_RBAC.contributorNames
     },
   }
