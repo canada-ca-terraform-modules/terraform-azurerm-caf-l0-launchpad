@@ -47,11 +47,6 @@ resource "random_string" "alpha1" {
   number  = false
 }
 
-# Define variables used by profile
-variable "env" {}
-variable "group" {}
-variable "project" {}
-
 locals {
   landingzone_tag = {
     landingzone = var.launchpad_mode

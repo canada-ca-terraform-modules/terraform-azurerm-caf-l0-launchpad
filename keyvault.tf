@@ -38,3 +38,37 @@ resource "azurerm_key_vault" "keyvault" {
     ]
   }
 }
+
+resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_owners" {
+  for_each = azurerm_key_vault.keyvault 
+  
+  key_vault_id = each.value.id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+  object_id = module.azuread_groups_L0.L0_Subscription_Owners.id
+
+  secret_permissions = ["Get", "List", "Set", "Delete", "Purge", "Restore", "Backup", "Recover"]
+
+  lifecycle {
+    ignore_changes = [
+      access_policy
+    ]
+  }
+}
+
+resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_contributors" {
+  for_each = azurerm_key_vault.keyvault 
+  
+  key_vault_id = each.value.id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+  object_id = module.azuread_groups_L0.L0_Subscription_Owners.id
+
+  secret_permissions = ["Get", "List", "Set", "Delete", "Purge", "Restore", "Backup", "Recover"]
+
+  lifecycle {
+    ignore_changes = [
+      access_policy
+    ]
+  }
+}

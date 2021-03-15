@@ -35,6 +35,10 @@ variable prefix {
   default = null
 }
 
+variable "env" {}
+variable "group" {}
+variable "project" {}
+
 # Do not change the default value to be able to upgrade to the standard launchpad
 variable tf_name {
   description = "Name of the terraform state in the blob storage (Does not include the extension .tfstate)"
@@ -50,6 +54,8 @@ variable storage_account_name {
 variable keyvaults {}
 
 variable subscriptions {}
+
+variable L0_RBAC {}
 
 variable aad_apps {}
 
