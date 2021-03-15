@@ -6,7 +6,7 @@ locals {
     },
     L0_Subscription_Contributors = {
       userDefinedString = "${var.group}_${var.project}_L1_Subscription_Contributors"
-      owners            = var.L0_RBAC.Contributors
+      owners            = var.L0_RBAC.contributorNames
     },
   }
 }
