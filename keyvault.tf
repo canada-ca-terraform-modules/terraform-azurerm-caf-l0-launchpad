@@ -45,7 +45,7 @@ resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_owners" {
   key_vault_id = each.value.id
 
   tenant_id = data.azurerm_client_config.current.tenant_id
-  object_id = module.azuread_groups_L0.L0_Subscription_Owners.id
+  object_id = module.azuread_groups_L0["L0_Subscription_Owners"].id
 
   secret_permissions = ["Get", "List", "Set", "Delete", "Purge", "Restore", "Backup", "Recover"]
 }
@@ -56,7 +56,7 @@ resource "azurerm_key_vault_access_policy" "keyvault_access_policy_L0_contributo
   key_vault_id = each.value.id
 
   tenant_id = data.azurerm_client_config.current.tenant_id
-  object_id = module.azuread_groups_L0.L0_Subscription_Owners.id
+  object_id = module.azuread_groups_L0["L0_Subscription_Owners"].id
 
   secret_permissions = ["Get", "List", "Set", "Delete", "Purge", "Restore", "Backup", "Recover"]
 }
