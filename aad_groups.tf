@@ -33,13 +33,13 @@ data "azuread_users" "L0_Subscription_Contributors" {
 resource "azuread_group_member" "L0_Subscription_Owners-Members" {
   for_each = toset(data.azuread_users.L0_Subscription_Owners.object_ids)
 
-  group_object_id  = module.azuread_groups_L0.L0_Subscription_Owners.id
+  group_object_id  = module.azuread_groups_L0["L0_Subscription_Owners"].id
   member_object_id = each.key
 }
 
 resource "azuread_group_member" "L0_Subscription_Contributors-Members" {
   for_each = toset(data.azuread_users.L0_Subscription_Contributors.object_ids)
 
-  group_object_id  = module.azuread_groups_L0.L0_Subscription_Contributors.id
+  group_object_id  = module.azuread_groups_L0["L0_Subscription_Contributors"].id
   member_object_id = each.key
 }
